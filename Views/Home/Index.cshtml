@@ -1,6 +1,6 @@
 ﻿@model HomeViewModels
 
-@await Html.PartialAsync("_Carousel")
+<partial name="_Carousel" />
 
 <h2>Os preferidos da semana </h2>
 <h4>Tá com fome ???</h4>
@@ -9,7 +9,18 @@
 
     @foreach (var lanche in Model.LanchesPreferidos)
     {
-        @Html.Partial("_LanchesResumo", lanche)
+        <partial name="_LanchesResumo" for="@lanche" />
     }
+
+    @*Uma outra forma:*@
+
+    @*@{ 
+        var preferidos = Model.LanchesPreferidos.ToList();
+    }
+
+    @foreach ( var lanche in preferidos)
+    {
+        @Html.Partial("_LanchesResumo", lanche)
+    }*@
 
 </div>
