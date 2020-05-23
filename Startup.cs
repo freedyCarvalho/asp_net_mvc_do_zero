@@ -4,6 +4,7 @@ using LanchesMacCurso.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing.Matching;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -73,10 +74,25 @@ namespace LanchesMacCurso
 
             app.UseEndpoints(endpoints =>
             {
+
+                endpoints.MapControllerRoute(
+                   name: "CategoriaPorFiltro",
+                   pattern: "Lanche/{action}/{categoria?}",
+                   defaults: new { Controller = "Lanche", action = "List" });
+
+                endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller=Lanche}/{action=List}/{id?}");
+
+                // Comentei e deixei a de cima, para poder não ter que ficar sempre digitando
+                // a url para listar os lanches
+                /*
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                */
             });
+
         }
     }
 }
