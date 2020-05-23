@@ -5,7 +5,9 @@
     <li>
         <a asp-controle="CarrinhoCompra">
             <span class="align-bottom">
-                <img src="/img/cart-5-16.ico" style="vertical-align:-webkit-baseline-middle" />
+                <a asp-controller="CarrinhoCompra" title="Visualizar Carrinho de Compra">
+                    <img src="/img/cart-5-16.ico" style="vertical-align:-webkit-baseline-middle" />
+                </a>
             </span>
             <span id="card-status" class="text-white" style="vertical-align:-webkit-baseline-middle">@Model.CarrinhoCompra.CarrinhoCompraItens.Count</span>
         </a>

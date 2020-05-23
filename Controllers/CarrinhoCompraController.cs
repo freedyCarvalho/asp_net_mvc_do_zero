@@ -32,7 +32,7 @@ namespace LanchesMacCurso.Controllers
         }
 
         // Usamos o RedirectToActionResult porque o usuário terá que confirmar o item no carrinho
-        public RedirectToActionResult AdicionarItemNOCarinhoCompra(int lancheId)
+        public RedirectToActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
         {
             
             // usamos o FirstOrDefault porque se ele não achar, é retornado null e não lança uma exceção
@@ -59,5 +59,14 @@ namespace LanchesMacCurso.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //Esse método não tem no curso, mas achei necessário criá-lo para facilitar o aprendizado
+        public RedirectToActionResult LimparCarrinho()
+        {
+
+            _carrinhoCompra.LimparCarrinho();
+           return RedirectToAction("Index");
+        }
+
     }
 }

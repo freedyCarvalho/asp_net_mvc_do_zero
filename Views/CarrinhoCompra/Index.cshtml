@@ -1,8 +1,10 @@
 ﻿@model CarrinhoCompraViewModels
 
-    <div class="row form-check">
-        <h2>Seu carrinho de compras</h2>
-        <h4>Aqui estão os seus pedidos</h4>
+    <div class="row checkoutForm" style="margin-top:10%">
+        <img src="~/img/Full-Cart-icon.png" />
+        <div>
+            <h4> Seu carrinho de compras : </h4>
+        </div>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -24,7 +26,7 @@
                             @((item.Quantidade * item.Lanche.Preco).ToString("c"))
                         </td>
                         <td>
-                            <a class="glyphicon glyphicon-remove text-danger remove" asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-lancheId="@item.Lanche.LancheId"></a>
+                            <a class="glyphicon glyphicon-remove text-danger remove" asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-lancheId="@item.Lanche.LancheId"><img src="~/img/delete.png" /></a>
                         </td>
                     </tr>
                 }
@@ -35,12 +37,16 @@
                     <td class="text-right">@Model.CarrinhoCompraTotal.ToString("c")</td>
                 </tr>
             </tfoot>
-            
+
         </table>
 
         <div>
             <div>
+                @if (Model.CarrinhoCompra.CarrinhoCompraItens.Count > 0)
+                {
                 <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+                }
+
                 <a class="btn-group">
                     <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         Adicionar mais lanches <span class="caret"></span>
@@ -50,7 +56,7 @@
                         <li><a asp-controller="Lanche" asp-action="List" asp-route-categoria="Natural">Natural</a></li>
                     </ul>
                 </a>
-                <a href="#">content</a>
+                <a class="btn btn-success" asp-controller="CarrinhoCompra" asp-action="LimparCarrinho">Limpar Carrinho</a>
             </div>
         </div>
     </div>

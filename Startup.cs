@@ -80,17 +80,16 @@ namespace LanchesMacCurso
                    pattern: "Lanche/{action}/{categoria?}",
                    defaults: new { Controller = "Lanche", action = "List" });
 
+               /*
                 endpoints.MapControllerRoute(
                    name: "default",
                    pattern: "{controller=Lanche}/{action=List}/{id?}");
+               */
 
-                // Comentei e deixei a de cima, para poder não ter que ficar sempre digitando
-                // a url para listar os lanches
-                /*
-                endpoints.MapControllerRoute(
+               endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                */
+               
             });
 
         }
