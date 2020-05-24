@@ -39,8 +39,20 @@ namespace LanchesMacCurso.Controllers
             if (ModelState.IsValid)
             {
                 _pedidoRepository.CriarPedido(pedido);
+
+                ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido :) ";
+
+                decimal totalPedido = _carrinhoCompra.GetCarrinhoCompraTotal();
+
+                TempData["Cliente"] = pedido.Nome;
+                TempData["NumeroPedido"] = pedido.PedidoId;
+                TempData["DataPedido"] = pedido.PedidoEnviado;
+                TempData["TotalPedido"] = totalPedido.ToString("C2");
+
                 _carrinhoCompra.LimparCarrinho();
+
                 return RedirectToAction("CheckoutCompleto");
+                //return View("~/Views/Pedido/CheckoutCompleto.cshtml", pedido);
             }
             
             return View(pedido);
@@ -48,7 +60,13 @@ namespace LanchesMacCurso.Controllers
 
         public IActionResult CheckoutCompleto()
         {
+            ViewBag.Cliente = TempData["Cliente"];
+            ViewBag.NumeroPedido = TempData["NumeroPedido"];
+            ViewBag.DataPedido = TempData["DataPedido"];
+            ViewBag.TotalPedido = TempData["TotalPedido"];
+
             ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido";
+
             return View();
         }
     }
