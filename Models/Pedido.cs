@@ -69,14 +69,16 @@ namespace LanchesMacCurso.Models
         [BindNever]
         [ScaffoldColumn(false)]
         [Display(Name = "Data/Hora de Recebimento do Pedido")]
-        [DataType(DataType.DateTime)]
+        //[DataType(DataType.DateTime)]
+        [Column(TypeName = "Datetime")]
         [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime PedidoEnviado { get; set; }
 
         [BindNever]
         [ScaffoldColumn(false)]
         [Display(Name = "Data/Hora da Entrega do Pedido")]
-        [DataType(DataType.DateTime)]
+        //[DataType(DataType.DateTime)]
+        [Column(TypeName = "Datetime")]
         [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime? PedidoEntregueEm { get; set; }
     }

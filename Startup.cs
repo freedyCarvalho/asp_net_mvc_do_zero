@@ -1,6 +1,7 @@
 using LanchesMacCurso.Context;
 using LanchesMacCurso.Models;
 using LanchesMacCurso.Repositories;
+using LanchesMacCurso.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,6 +35,7 @@ namespace LanchesMacCurso
             // services.AddTransient<Interface, Implementação>
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<ILancheRepository, LancheRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped(cp => CarrinhoCompra.GetCarrinho(cp));
