@@ -19,7 +19,9 @@ namespace LanchesMacCurso.Repositories
         public void CriarPedido(Pedido pedido)
         {
             pedido.PedidoEnviado = DateTime.Now;
+            pedido.PedidoTotal = _carrinhoCompra.GetCarrinhoCompraTotal();
             _appDbContext.Pedidos.Add(pedido);
+            _appDbContext.SaveChanges();
 
             var carrinhoCompraItens = _carrinhoCompra.CarrinhoCompraItens;
 

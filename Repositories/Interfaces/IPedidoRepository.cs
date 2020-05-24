@@ -2,11 +2,8 @@
 
 namespace LanchesMacCurso.Repositories.Interfaces
 {
-    interface IPedidoRepository
+    public interface IPedidoRepository
     {
-        public interface IPedidoRepository
-        {
-            void CriarPedido(Pedido pedido);
-        }
+        void CriarPedido(Pedido pedido);
     }
 }
