@@ -1,10 +1,6 @@
 ﻿using LanchesMacCurso.Models;
 using LanchesMacCurso.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.Options;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Cryptography.X509Certificates;
 
 namespace LanchesMacCurso.Controllers
 {
@@ -40,34 +36,39 @@ namespace LanchesMacCurso.Controllers
             {
                 _pedidoRepository.CriarPedido(pedido);
 
-                ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido :) ";
-
+                // Nâo está no curso, mas para não dar o erro "Serialize Decimal"
+                // Já faço a conversão antes de enviar para o TempData e para o ViewBag
                 decimal totalPedido = _carrinhoCompra.GetCarrinhoCompraTotal();
 
-                TempData["Cliente"] = pedido.Nome;
-                TempData["NumeroPedido"] = pedido.PedidoId;
-                TempData["DataPedido"] = pedido.PedidoEnviado;
-                TempData["TotalPedido"] = totalPedido.ToString("C2");
+                //TempData["Cliente"] = pedido.Nome;
+                //TempData["NumeroPedido"] = pedido.PedidoId;
+                //TempData["DataPedido"] = pedido.PedidoEnviado;
+                //TempData["TotalPedido"] = totalPedido.ToString("C2");
+
+                ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido :) ";
+                ViewBag.TotalPedido = totalPedido.ToString("C2");
 
                 _carrinhoCompra.LimparCarrinho();
 
-                return RedirectToAction("CheckoutCompleto");
-                //return View("~/Views/Pedido/CheckoutCompleto.cshtml", pedido);
+                //return RedirectToAction("CheckoutCompleto");
+
+                // implementação para exibição de mais informações sobre o pedido
+                return View("~/Views/Pedido/CheckoutCompleto.cshtml", pedido);
             }
             
             return View(pedido);
         }
 
-        public IActionResult CheckoutCompleto()
-        {
-            ViewBag.Cliente = TempData["Cliente"];
-            ViewBag.NumeroPedido = TempData["NumeroPedido"];
-            ViewBag.DataPedido = TempData["DataPedido"];
-            ViewBag.TotalPedido = TempData["TotalPedido"];
+        //public IActionResult CheckoutCompleto()
+        //{
+        //    ViewBag.Cliente = TempData["Cliente"];
+        //    ViewBag.NumeroPedido = TempData["NumeroPedido"];
+        //    ViewBag.DataPedido = TempData["DataPedido"];
+        //    ViewBag.TotalPedido = TempData["TotalPedido"];
 
-            ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido";
+        //    ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido";
 
-            return View();
-        }
+        //    return View();
+        //}
     }
 }

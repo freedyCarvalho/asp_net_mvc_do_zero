@@ -1,15 +1,28 @@
-﻿<br />
+﻿@model Pedido 
+
+<br />
 <div class="container" style="margin-top:10%;">
     <div class="jumbotron">
         <h2>@ViewBag.CheckoutCompletoMensagem</h2>
-        <div class="card">
-            <p>Cliente: <strong>@ViewBag.Cliente</strong></p>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <p>Cliente: <strong>@Model.Nome</strong></p>
+            <p>Data do pedido: <strong>@Model.PedidoEnviado</strong></p>
+            <p>Número do pedido: <strong>@Model.PedidoId</strong></p>
             <br />
-            <p>Data do pedido: <strong>@ViewBag.DataPedido</strong></p>
-            <br />
-            <p>Número do Pedido: <strong>@ViewBag.NumeroPedido</strong></p>
-            <br />
-            <p>Valor Total do Pedido: <strong>@ViewBag.TotalPedido </strong></p>
+            @foreach (var item in Model.PedidoItens)
+            {
+                <img src="@item.Lanche.ImagemUrl" width="40" height="40"/>
+                <ul>
+                    <li>@item.Quantidade</li>
+                    <li>@item.Lanche.Nome</li>
+                    <li>@item.Lanche.Preco</li>
+                </ul>
+            }
+
+        <p>Valor total do pedido: <strong> @ViewBag.TotalPedido</strong></p>
+
         </div>
     </div>
 </div>
