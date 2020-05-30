@@ -33,6 +33,9 @@
                         <li>
                             @await Component.InvokeAsync("CarrinhoCompraResumo")
                         </li>
+                        <li>
+                            @await Html.PartialAsync("_LoginPartial") 
+                        </li>
                     </ul>
                 </div>
                 <div class="float-right">

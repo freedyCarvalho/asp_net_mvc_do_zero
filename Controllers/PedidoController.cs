@@ -1,5 +1,6 @@
 ﻿using LanchesMacCurso.Models;
 using LanchesMacCurso.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LanchesMacCurso.Controllers
@@ -16,12 +17,14 @@ namespace LanchesMacCurso.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Checkout(Pedido pedido)
         {
             var itens = _carrinhoCompra.GetCarrinhoCompraItens();

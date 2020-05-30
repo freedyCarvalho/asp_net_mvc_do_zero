@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LanchesMacCurso.Controllers
 {
@@ -6,7 +7,13 @@ namespace LanchesMacCurso.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            //if (User.Identity.IsAuthenticated)
+            //{
+                return View();
+            //}
+
+            //return RedirectToAction("Login", "Account");
+            
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using LanchesMacCurso.Models;
 using LanchesMacCurso.Repositories;
 using LanchesMacCurso.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -17,6 +18,7 @@ namespace LanchesMacCurso.Controllers
             _carrinhoCompra = carrinhoCompra;
         }
         
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var itens = _carrinhoCompra.GetCarrinhoCompraItens();
@@ -32,6 +34,7 @@ namespace LanchesMacCurso.Controllers
         }
 
         // Usamos o RedirectToActionResult porque o usuário terá que confirmar o item no carrinho
+        [Authorize]
         public RedirectToActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
         {
             
@@ -48,6 +51,7 @@ namespace LanchesMacCurso.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public IActionResult RemoverItemDoCarrinhoCompra(int lancheId)
         {
             var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
@@ -61,6 +65,7 @@ namespace LanchesMacCurso.Controllers
         }
 
         //Esse método não tem no curso, mas achei necessário criá-lo para facilitar o aprendizado
+        [Authorize]
         public RedirectToActionResult LimparCarrinho()
         {
 
