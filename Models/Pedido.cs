@@ -8,7 +8,8 @@ namespace LanchesMacCurso.Models
 {
     public class Pedido
     {
-        [BindNever] // Informa que a propriedade PedidoId não vai ser vinculada ao formulário
+        // Comentado para a criação da área administrativa
+        //[BindNever] // Informa que a propriedade PedidoId não vai ser vinculada ao formulário
         public int PedidoId { get; set; }
         public List<PedidoDetalhe> PedidoItens { get; set; }
 
@@ -66,16 +67,18 @@ namespace LanchesMacCurso.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal PedidoTotal { get; set; }
         
-        [BindNever]
-        [ScaffoldColumn(false)]
+        // Comentado para a criação da área administrativa
+        //[BindNever]
+        //[ScaffoldColumn(false)]
         [Display(Name = "Data/Hora de Recebimento do Pedido")]
         //[DataType(DataType.DateTime)]
         [Column(TypeName = "Datetime")]
         [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime PedidoEnviado { get; set; }
 
-        [BindNever]
-        [ScaffoldColumn(false)]
+        //Comentado para a criação da área administrativa
+        //[BindNever]
+        //[ScaffoldColumn(false)]
         [Display(Name = "Data/Hora da Entrega do Pedido")]
         //[DataType(DataType.DateTime)]
         [Column(TypeName = "Datetime")]

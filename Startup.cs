@@ -98,6 +98,10 @@ namespace LanchesMacCurso
             {
 
                 endpoints.MapControllerRoute(
+                    name: "AdminArea",
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+                
+                endpoints.MapControllerRoute(
                    name: "CategoriaPorFiltro",
                    pattern: "Lanche/{action}/{categoria?}",
                    defaults: new { Controller = "Lanche", action = "List" });
