@@ -57,7 +57,6 @@ namespace LanchesMacCurso
             //elas vão obter instâncias diferentes
             services.AddScoped(cp => CarrinhoCompra.GetCarrinho(cp));
             services.AddMvc();
-            //configura o uso da Sessão
             services.AddMemoryCache();
             services.AddSession();
             

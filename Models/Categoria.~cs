@@ -8,7 +8,7 @@ namespace LanchesMacCurso.Models
     public class Categoria
     {
         public int CategoriaId { get; set; }
-        [Display(Name = "Nome")]
+        
         [Required]
         [StringLength(100)]
         public string CategoriaNome { get; set; }
@@ -17,6 +17,6 @@ namespace LanchesMacCurso.Models
         [StringLength(200)]
         public string Descricao { get; set; }
         
-		public virtual List<Lanche> Lanches { get; set; }
+        public List<Lanche> Lanches { get; set; }
     }
 }

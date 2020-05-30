@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LanchesMacCurso.Data
 {
-    public static class SeedData
+    public class SeedData
     {
         public static async Task CreateRoles(IServiceProvider serviceProvider,
            IConfiguration Configuration)

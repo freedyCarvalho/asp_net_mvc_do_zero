@@ -83,18 +83,16 @@ namespace LanchesMacCurso.Models
 
             var quantidadeLocal = 0;
 
-            if (carrinhoCompraItem != null)
+            if (carrinhoCompraItem.Quantidade > 1)
             {
-                if (carrinhoCompraItem.Quantidade > 1)
-                {
-                    carrinhoCompraItem.Quantidade--;
-                    quantidadeLocal = carrinhoCompraItem.Quantidade;
-                }
-                else
-                {
-                    _contexto.CarrinhoCompraItens.Remove(carrinhoCompraItem);
-                }
+                carrinhoCompraItem.Quantidade--;
+                quantidadeLocal = carrinhoCompraItem.Quantidade;
             }
+            else
+            {
+                _contexto.CarrinhoCompraItens.Remove(carrinhoCompraItem);
+            }
+
             _contexto.SaveChanges();
 
             return quantidadeLocal;

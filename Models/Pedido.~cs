@@ -11,7 +11,7 @@ namespace LanchesMacCurso.Models
         // Comentado para a criação da área administrativa
         //[BindNever] // Informa que a propriedade PedidoId não vai ser vinculada ao formulário
         public int PedidoId { get; set; }
-        public virtual List<PedidoDetalhe> PedidoItens { get; set; }
+        public List<PedidoDetalhe> PedidoItens { get; set; }
 
         [StringLength(50)]
         [Required(ErrorMessage = "Informe o Nome")]
