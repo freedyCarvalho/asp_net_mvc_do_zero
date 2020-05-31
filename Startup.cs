@@ -40,6 +40,7 @@ namespace LanchesMacCurso
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            // Se ocorrer o acesso negado, o usuário é direcionado para essa url
             services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Home/AccessDenied");
 			
 			// .AddTransient -> o serviço será criado cada vez que for solicitado
