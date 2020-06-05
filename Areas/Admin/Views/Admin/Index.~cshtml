@@ -1,9 +1,0 @@
-﻿<img src="~/img/adminarea.jpg" alt="Área de Administração" title="Área de Administração" style="margin-top:10%" />
-<div class="container">
-    <div class="jumbotron">
-        <p>
-            Esta é a área do administrador
-        </p>
-    </div>
-    <a asp-area="" asp-controller="Home" asp-action="Index">Volta a Home Page</a>
-</div>

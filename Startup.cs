@@ -90,15 +90,14 @@ namespace LanchesMacCurso
             // que o recurso não existe
             app.UseSession();
 
+            app.UseRouting();
+
             // Habilita para poder utilizar o Entity na aplicação
             // Esse middleware vai adicionar a autenticação ao Pipeline da solicitação
             // Ele adiciona um único componente de middleware de autenticação que é responsável pela autenticação automática
             // e pelo tratamento de pedidos de autenticação remota. Ele vai substituir todos os componentes de middleware individuais
             // por um único componente de middleware comum.
             app.UseAuthentication();
-
-            app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
